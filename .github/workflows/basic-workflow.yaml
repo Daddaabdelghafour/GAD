@@ -9,3 +9,7 @@ jobs:
     steps:
       - name: The things i've fone
         run: echo "Mama , i've done it"
+      - name: An Error I made
+        run: |
+          echo "I made an error"
+          exit 1
