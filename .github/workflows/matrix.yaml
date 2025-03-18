@@ -1,0 +1,14 @@
+name: Matrix Strategy
+on:
+  push:
+    branches-ignore: main
+jobs:
+  fadouas-job:
+    name: Fadoua's Job
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    steps:
+      - name: The thing i've done - ${{ matrix.os }}
+        run: echo "I've done the thing on ${{ matrix.os }}"
