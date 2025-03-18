@@ -1,0 +1,26 @@
+name : Manual Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      choice-example:
+        description: Choice Example
+        required: true
+        default: warning
+        type: choice
+        options:
+          - warning
+          - error
+          - success
+          - failure
+      string-example:
+        description: String Example
+        required: true
+        default: input
+        type: string
+jobs:
+  do-things:
+    name: Do things Manually
+    runs-on: ubuntu-latest
+    steps:
+      - name: Do things Manually
+        run: echo "I've Done a thing manually"
