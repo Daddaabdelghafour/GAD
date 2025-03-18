@@ -3,12 +3,15 @@ on:
   push:
     branches-ignore: main
 jobs:
-  fadouas-job:
-    name: Fadoua's Job
-    runs-on: ${{ matrix.os }}
+  FA_JOB:
+    name: Fadoua's and Abdelghafour's Job - ${{ matrix.os }} , ${{ matrix.node-version }}
+    runs-on: ${{ matrix.os}}
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest, macOs-latest]
+        node-version: [10.x, 12.x, 14.x, 15.x]
     steps:
-      - name: The thing i've done - ${{ matrix.os }}
-        run: echo "I've done the thing on ${{ matrix.os }}"
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/step-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
