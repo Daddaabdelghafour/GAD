@@ -1,4 +1,4 @@
-name: Manual Workflow
+name: Manual & Shared Workflow
 on:
   workflow_dispatch:
     inputs:
@@ -8,9 +8,22 @@ on:
         default: warning
         type: choice
         options:
-          - info
           - warning
-          - debug
+          - error
+          - success
+          - failure
+      string-example:
+        description: String Example
+        required: true
+        default: input
+        type: string
+  workflow_call:
+    inputs:
+      choice-example:
+        description: Choice Example
+        required: true
+        default: warning
+        type: string
       string-example:
         description: String Example
         required: true
@@ -18,8 +31,8 @@ on:
         type: string
 jobs:
   do-things:
-    name: Do Things Manually
+    name: Do things Manually
     runs-on: ubuntu-latest
     steps:
-      - name: Do A Thing
-        run: echo "I've done a thing manually with '${{ inputs.choice-example }}' and '${{ inputs.string-example }}'!"
+      - name: Do a thing
+        run: echo "I've done a thing manually with ''"
