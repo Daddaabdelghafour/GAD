@@ -1,4 +1,4 @@
-name: Continious Integration and Continious Deployment
+name: Continuous Integration and Continuous Deployment
 on:
   pull_request:
   workflow_dispatch:
@@ -14,19 +14,29 @@ jobs:
         working-directory: golang_app
     steps:
       - name: Clone
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.20"
+
       - name: Get Dependencies
         run: go get app
+
       - name: Build
         run: go build
+
       - name: Run Linting
-        uses: golang/golangci-lint-action@v3
+        uses: golangci/golangci-lint-action@v3
         with:
           working-directory: golang_app
+
       - name: Run Tests
         run: go test
+
       - name: Store Artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: golang_app
           path: golang_app/app
