@@ -20,9 +20,9 @@ jobs:
         with:
           script: |
             const create = await github.rest.issues.create({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            title: 'New issue created using Github Script Action',
-            body: 'This issue was created using Github Script Action! here is the SHA that triggered this: ${{github.sha}}'
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'New issue created using Github Script Action',
+              body: 'This issue was created using Github Script Action! here is the SHA that triggered this: ${{github.sha}}'
             })
             return create.data.number
