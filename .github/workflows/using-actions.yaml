@@ -1,0 +1,32 @@
+name: Using Actions
+on:
+  push:
+    branches: main
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  abdou-job:
+    name: abdou's job
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Directory Content
+        run: ls -latr
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          clean: true
+      - name: List Directory Content Again
+        run: ls -latr
+      - name: Use Github Script Action
+        uses: actions/github-script@v3
+        with:
+          script: |
+            const create = await github.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'New issue created using Github Script Action',
+              body: 'This issue was created using Github Script Action! here is the SHA that triggered this: ${{github.sha}}'
+            })
+            return create.data.number
