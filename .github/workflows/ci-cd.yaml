@@ -1,4 +1,4 @@
-name : Continious Integration and Continious Deployment
+name: Continious Integration and Continious Deployment
 on:
   pull_request:
   workflow_dispatch:
@@ -18,7 +18,7 @@ jobs:
       - name: Get Dependencies
         run: go get app
       - name: Build
-        run: go build 
+        run: go build
       - name: Run Linting
         uses: golang/golangci-lint-action@v3
         with:
