@@ -4,7 +4,7 @@ on:
     branches: main
 jobs:
   Abdelghafour-job:
-    uses: ./.github/workflows/shared.yaml
+    uses: ./.github/workflows/manual.yaml
     with:
       choice-example: warning
       string-example: input
