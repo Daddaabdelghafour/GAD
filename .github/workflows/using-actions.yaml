@@ -19,7 +19,7 @@ jobs:
         uses: actions/github-script@v3
         with:
           script: |
-            const create = await github.rest.issues.create({
+            const create = await github.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
               title: 'New issue created using Github Script Action',
