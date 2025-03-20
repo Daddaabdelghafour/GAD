@@ -3,15 +3,26 @@ on:
   push:
     branches: main
 jobs:
-  Abdou-job:
-    name: Using actions for the first time
+  abdou-job:
+    name: abdou's job
     runs-on: ubuntu-latest
     steps:
-      - name: List Directory Contents
+      - name: List Directory Content
         run: ls -latr
-      - name: Checkout the Code
-        uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v2
         with:
           clean: true
-      - name: List Directory Contents Again
+      - name: List Directory Content Again
         run: ls -latr
+      - name: Use Github Script Action
+        uses: actions/github-script@v3
+        with:
+          script: |
+            const create = await github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: 'New issue created using Github Script Action',
+            body: 'This issue was created using Github Script Action! here is the SHA that triggered this: ${{github.sha}}'
+            })
+            return create.data.number
