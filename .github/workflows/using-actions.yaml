@@ -2,6 +2,10 @@ name: Using Actions
 on:
   push:
     branches: main
+permissions:
+  issues: write
+  contents: read
+
 jobs:
   abdou-job:
     name: abdou's job
